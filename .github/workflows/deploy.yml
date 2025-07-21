@@ -10,6 +10,7 @@ env:
 
 jobs:
   build-and-push-dockerfile-image:
+    environment: production
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -43,3 +44,10 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           platforms: linux/amd64
+
+      - name: Trigger Dokploy Deployment
+        uses: benbristow/dokploy-deploy-action@0.0.1
+        with:
+          application_id: ${{ vars.DOKPLOY_APP_ID }}
+          dokploy_url: ${{ secrets.DOKPLOY_URL }}
+          auth_token: ${{ secrets.DOKPLOY_AUTH_TOKEN }}
