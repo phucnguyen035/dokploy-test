@@ -45,9 +45,9 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           platforms: linux/amd64
 
-      # - name: Trigger Dokploy Deployment
-      #   uses: benbristow/dokploy-deploy-action@0.0.1
-      #   with:
-      #     application_id: ${{ vars.DOKPLOY_APP_ID }}
-      #     dokploy_url: ${{ secrets.DOKPLOY_URL }}
-      #     auth_token: ${{ secrets.DOKPLOY_AUTH_TOKEN }}
+      - name: Trigger Dokploy Deployment
+        uses: benbristow/dokploy-deploy-action@0.0.1
+        with:
+          application_id: ${{ vars.DOKPLOY_APP_ID }}
+          dokploy_url: ${{ secrets.DOKPLOY_URL }}
+          auth_token: ${{ secrets.DOKPLOY_AUTH_TOKEN }}
