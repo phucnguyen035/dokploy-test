@@ -1,7 +1,10 @@
 
 import { hostname } from 'os';
 
-export function load() {
+export function load({getClientAddress}) {
+  const clientAddress = getClientAddress();
+  console.log(`Hello ${clientAddress}`)
+
   return {
 		hostname: hostname(),
 		pid: process.pid,
