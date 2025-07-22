@@ -1,14 +1,12 @@
-
 import { hostname } from 'os';
 
-export function load({getClientAddress}) {
-  const clientAddress = getClientAddress();
-  console.log(`Hello ${clientAddress}`)
+export function load() {
+  console.log('hostname', hostname());
 
-  return {
+	return {
 		hostname: hostname(),
 		pid: process.pid,
 		nodeVersion: process.version,
-		timestamp: new Date().toISOString(),
- }
+		timestamp: new Date().toISOString()
+	};
 }
